@@ -71,12 +71,24 @@
 
         displayDataElement.appendChild(userDataElement);
 
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.addEventListener("click", function () {
+          document.getElementById("firstName").value = formData.firstName;
+          document.getElementById("lastName").value = formData.lastName;
+          document.getElementById("email").value = formData.email;
+          document.getElementById("number").value = formData.number;
+          displayDataElement.removeChild(userDataElement);
+          localStorage.removeItem("formData");
+        });
+
         const deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete";
         deleteBtn.addEventListener("click", function () {
           displayDataElement.removeChild(userDataElement);
         });
 
+        userDataElement.appendChild(editBtn);
         userDataElement.appendChild(deleteBtn);
         displayDataElement.appendChild(userDataElement);
       }
